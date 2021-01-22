@@ -6,6 +6,14 @@ class Admin extends Controller{
         $this->postModel = $this->model('PostModel');
     }
 
+    function home() {
+        $this->view('PostMain', [
+            'posts' => $this->postModel->getPost(),
+            'currentPage' => 1,
+            'numPage'=> 10
+        ]);
+    }
+
     function show($numPage, $currentPage) {
         $this->view('PostMain', [
             'posts' => $this->postModel->getPost(),
